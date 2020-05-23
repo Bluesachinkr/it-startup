@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="Login.css">
+    </head>
+    <body>
+        <h1>Welcome to our website</h1>
+        <div class="form">
+            <h2>LOGIN</h2>
+            <form onsubmit="return signUp()" action="home.html">
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                <input type="checkbox">&nbsp;
+                <label type="text" style="color: #000000;">Remember Me</label>
+                <input type="submit">
+            </form>
+            <br>
+            <a href="/signUp.html" align="center">Don't have any account</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="home.html">Continue as guest</a> 
+        </div>
+        <script>
+            function validate() {
+	if (document.getElementById('email').value == "") {
+		alert('Email should not be empty');
+		return false;
+	}
+	if (document.getElementById('password').value == "") {
+		alert('Password should not be empty');
+		return false;
+	}
+	return true;
+}
+
+function signUp() {
+	if (validate() == false) {
+		return false;
+    }
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))){
+        alert("You have entered an invalid email address")
+        return false;   
+    }
+    var passw=  /^[A-Za-z]\w{7,14}$/;
+    if(!(document.getElementById("password").value.match(passw))){
+        alert("Password is invalid . Passowrd should contains first letter and then it should also contain lowercase letter and numbers and it can end with _");
+        return false;
+    }
+	return true;
+}
+        </script>
+    </body>
+</html>
